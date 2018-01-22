@@ -307,7 +307,7 @@ HTML;
 				$blocker_unit = $this->params->mobile_device ? 'top_mrec' : 'top';
 				$snippet = $this->get_ad_snippet( $section_id, $height, $width, $blocker_unit );
 			} else if ( 'belowpost' == $spot ) {
-				if ( $this->belowpost_loaded ) {
+				if ( ! is_main_query() || $this->belowpost_loaded ) {
 					// only load once on themes that do weird stuff w/ `the_excerpt` and `the_content`
 					return '';
 				}
